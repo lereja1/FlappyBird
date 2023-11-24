@@ -17,9 +17,9 @@ class Bird  {
         
         this.vy = this.vy + 0.3;
     }
-
+   
     jump() {
-        this.vy = -30
+        this.vy = -10
     }
 
 }
