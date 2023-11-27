@@ -12,19 +12,43 @@ class Obstacle {
 
         //      x,  y, w,    h
         rect(this.x, 0, 40, this.gapHeight);
-        //      x,  y, w,    h
+        //      x,  y, w,     h
         rect(this.x, this.gap + this.gapHeight, 40, height - this.gapHeight + this.gap );
     }
 
-    move() {
+    move(bird) {
         this.x = this.x - 2;
 
-        if (this.x < 0) { 
+        this.gapHeight = 100*noise(this.x/100) + 100
+ 
+        if (Math.floor(this.x / 2) === Math.floor(bird.x / 2)){
+        bird.score = bird.score + 1 
+
+            if (bird.score > bird.highscore) {
+                bird.highscore = bird.score;
+
+                localStorage.setItem("highscore", bird.highscore);
+            }
+        }
+        if (this.x < 0) {
             this.x = width;
+            this.gap = random(100, 200)
+            this.gapHeight = random(100,400)
         }
      
     }
 
-
+    isColliding(bird) { 
+        
+        if (this.x < bird.x && this.x + 40 > bird.x) {
+         
+            if (bird.y < this.gapHeight || bird.y > this.gapHeight + this.gap) {
+               return true;
+            
+            }
+        }
+        
+        return false;                 
+    }
 
 }  
