@@ -11,4 +11,4 @@
 
 
 
-https://raw.githack.com/lereja1/FlappyBird/main/index.html
+[Jouer](https://raw.githack.com/lereja1/FlappyBird/main/index.html)
